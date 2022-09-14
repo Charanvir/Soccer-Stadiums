@@ -1,5 +1,7 @@
 // domain.com/new-stadium
 import { useRouter } from 'next/router'
+import { Fragment } from 'react'
+import Head from 'next/head'
 import NewMeetupForm from '../../components/meetups/NewMeetupForm'
 
 const NewStadiumPage = () => {
@@ -21,7 +23,16 @@ const NewStadiumPage = () => {
     }
 
     return (
-        <NewMeetupForm onAddMeetup={addStadiumHandler}></NewMeetupForm>
+        <Fragment>
+            <Head>
+                <title>Stadiums Around the World</title>
+                <meta
+                    name='description'
+                    content='Browse stadiums from all over the world, including some of the biggest and most famous, such as Camp Nou and Old Trafford.'
+                />
+            </Head>
+            <NewMeetupForm onAddMeetup={addStadiumHandler}></NewMeetupForm>
+        </Fragment>
     )
 }
 

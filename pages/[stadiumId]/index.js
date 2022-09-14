@@ -1,15 +1,26 @@
 import { MongoClient, ObjectId } from "mongodb"
+import Head from "next/head"
+import { Fragment } from "react"
 // domain.com/[stadiumId]
 import MeetupDetail from "../../components/meetups/MeetupDetail"
 
 const StadiumDetails = (props) => {
     return (
-        <MeetupDetail
-            image={props.stadiumData.image}
-            title={props.stadiumData.title}
-            address={props.stadiumData.address}
-            description={props.stadiumData.description}
-        ></MeetupDetail>
+        <Fragment>
+            <Head>
+                <title>Stadiums Around the World</title>
+                <meta
+                    name='description'
+                    content='Browse stadiums from all over the world, including some of the biggest and most famous, such as Camp Nou and Old Trafford.'
+                />
+            </Head>
+            <MeetupDetail
+                image={props.stadiumData.image}
+                title={props.stadiumData.title}
+                address={props.stadiumData.address}
+                description={props.stadiumData.description}
+            ></MeetupDetail>
+        </Fragment>
     )
 }
 

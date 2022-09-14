@@ -1,11 +1,22 @@
 // domain.com/
+import Head from 'next/head'
 import { MongoClient } from 'mongodb'
 import MeetupList from '../components/meetups/MeetupList'
+import { Fragment } from 'react'
 
 const HomePage = (props) => {
 
     return (
-        <MeetupList meetups={props.stadiums}></MeetupList>
+        <Fragment>
+            <Head>
+                <title>Stadiums Around the World</title>
+                <meta
+                    name='description'
+                    content='Browse stadiums from all over the world, including some of the biggest and most famous, such as Camp Nou and Old Trafford.'
+                />
+            </Head>
+            <MeetupList meetups={props.stadiums}></MeetupList>
+        </Fragment>
     )
 }
 
