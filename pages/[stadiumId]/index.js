@@ -37,7 +37,7 @@ export async function getStaticPaths() {
 
     return {
         // paths contains all of the possible values
-        fallback: false,
+        fallback: 'blocking',
         paths: stadiums.map(stadium => ({ params: { stadiumId: stadium._id.toString() } }))
     }
 }
