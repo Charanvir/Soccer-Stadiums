@@ -8,10 +8,10 @@ const StadiumDetails = (props) => {
     return (
         <Fragment>
             <Head>
-                <title>Stadiums Around the World</title>
+                <title>{props.stadiumData.title}</title>
                 <meta
                     name='description'
-                    content='Browse stadiums from all over the world, including some of the biggest and most famous, such as Camp Nou and Old Trafford.'
+                    content={props.stadiumData.description}
                 />
             </Head>
             <MeetupDetail

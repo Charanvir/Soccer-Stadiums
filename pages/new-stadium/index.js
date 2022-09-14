@@ -25,10 +25,10 @@ const NewStadiumPage = () => {
     return (
         <Fragment>
             <Head>
-                <title>Stadiums Around the World</title>
+                <title>Add a New Stadium</title>
                 <meta
                     name='description'
-                    content='Browse stadiums from all over the world, including some of the biggest and most famous, such as Camp Nou and Old Trafford.'
+                    content='Add new stadiums to the database for everyone around the world to see'
                 />
             </Head>
             <NewMeetupForm onAddMeetup={addStadiumHandler}></NewMeetupForm>
