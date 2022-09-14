@@ -1,53 +1,57 @@
+import { MongoClient, ObjectId } from "mongodb"
 // domain.com/[stadiumId]
 import MeetupDetail from "../../components/meetups/MeetupDetail"
 
 const StadiumDetails = (props) => {
     return (
         <MeetupDetail
-            image='https://dd20lazkioz9n.cloudfront.net/wp-content/uploads/2022/03/Copy-of-WP-News-story-template-2022-03-15T093911.099.jpg'
-            title='Old Trafford'
-            address='Sir Matt Busby Way, Old Trafford, Stretford, Manchester M16 0RA, UK'
-            description='The home stadium of one of Europes most prestige clubs, Manchester United.'
+            image={props.stadiumData.image}
+            title={props.stadiumData.title}
+            address={props.stadiumData.address}
+            description={props.stadiumData.description}
         ></MeetupDetail>
     )
 }
 
 export async function getStaticPaths() {
+    const client = await MongoClient.connect('mongodb+srv://charanvir123:Capsfan123@cluster0.qluddrx.mongodb.net/stadiums?retryWrites=true&w=majority')
+    const db = client.db()
+
+    const stadiumCollections = db.collection('stadium')
+
+    const stadiums = await stadiumCollections.find({}, { _id: 1 }).toArray()
     // when using a backend with a database, you would fetch all of the ids within the database
+
+    client.close();
+
     return {
         // paths contains all of the possible values
         fallback: false,
-        paths: [
-            {
-                params: {
-                    stadiumId: 'm1'
-                }
-            },
-            {
-                params: {
-                    stadiumId: 'm2'
-                }
-            },
-            {
-                params: {
-                    stadiumId: 'm3'
-                }
-            },
-        ]
+        paths: stadiums.map(stadium => ({ params: { stadiumId: stadium._id.toString() } }))
     }
 }
 
 export async function getStaticProps(context) {
-    const stadiumId = context.params
+    const stadiumId = context.params.stadiumId
+
+    const client = await MongoClient.connect('mongodb+srv://charanvir123:Capsfan123@cluster0.qluddrx.mongodb.net/stadiums?retryWrites=true&w=majority')
+    const db = client.db()
+
+    const stadiumCollections = db.collection('stadium')
+
+    const stadium = await stadiumCollections.findOne({ _id: ObjectId(stadiumId) })
+    // when using a backend with a database, you would fetch all of the ids within the database
+
+    client.close();
 
     return {
         props: {
             stadiumData: {
-                image: 'https://dd20lazkioz9n.cloudfront.net/wp-content/uploads/2022/03/Copy-of-WP-News-story-template-2022-03-15T093911.099.jpg',
-                title: 'Old Trafford',
-                address: 'Sir Matt Busby Way, Old Trafford, Stretford, Manchester M16 0RA, UK',
-                description: 'The home stadium of one of Europes most prestige clubs, Manchester United.',
-                id: stadiumId
+                id: stadium._id.toString(),
+                title: stadium.title,
+                image: stadium.image,
+                address: stadium.address,
+                description: stadium.description
             }
         }
     }
