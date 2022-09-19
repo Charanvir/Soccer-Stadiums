@@ -24,6 +24,7 @@ const StadiumDetails = (props) => {
     )
 }
 
+// this will return all of the possible ids that are available for users to click
 export async function getStaticPaths() {
     const client = await MongoClient.connect('mongodb+srv://charanvir123:Capsfan123@cluster0.qluddrx.mongodb.net/stadiums?retryWrites=true&w=majority')
     const db = client.db()
