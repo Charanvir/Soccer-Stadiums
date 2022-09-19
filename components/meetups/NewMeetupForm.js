@@ -22,12 +22,24 @@ function NewMeetupForm(props) {
     const enteredImage = imageInputRef.current.value;
     const enteredAddress = addressInputRef.current.value;
     const enteredDescription = descriptionInputRef.current.value;
+    const enteredCity = cityInputRef.current.value;
+    const enteredCountry = countryInputRef.current.value;
+    const enteredCapacity = capacityInputRef.current.value;
+    const enteredDateOpened = dateOpenedInputRef.current.value;
+    const enteredTeam = teamInputRef.current.value;
+    const enteredCategory = categoryInputRef.current.value;
 
     const meetupData = {
       title: enteredTitle,
       image: enteredImage,
       address: enteredAddress,
       description: enteredDescription,
+      city: enteredCity,
+      country: enteredCountry,
+      capacity: enteredCapacity,
+      date_opened: enteredDateOpened,
+      teams: enteredTeam,
+      category: enteredCategory
     };
 
     props.onAddMeetup(meetupData);
