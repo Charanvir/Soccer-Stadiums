@@ -31,7 +31,7 @@ const StadiumDetails = (props) => {
 
 // this will return all of the possible ids that are available for users to click
 export async function getStaticPaths() {
-    const client = await MongoClient.connect('mongodb+srv://charanvir123:Capsfan123@cluster0.qluddrx.mongodb.net/stadiums?retryWrites=true&w=majority')
+    const client = await MongoClient.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PW}@cluster0.qluddrx.mongodb.net/stadiums?retryWrites=true&w=majority`)
     const db = client.db()
 
     const stadiumCollections = db.collection('stadium')
@@ -51,7 +51,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
     const stadiumId = context.params.stadiumId
 
-    const client = await MongoClient.connect('mongodb+srv://charanvir123:Capsfan123@cluster0.qluddrx.mongodb.net/stadiums?retryWrites=true&w=majority')
+    const client = await MongoClient.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PW}@cluster0.qluddrx.mongodb.net/stadiums?retryWrites=true&w=majority`)
     const db = client.db()
 
     const stadiumCollections = db.collection('stadium')

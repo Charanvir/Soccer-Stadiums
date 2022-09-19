@@ -23,7 +23,7 @@ const HomePage = (props) => {
 // only works on page component files
 export async function getStaticProps() {
 
-    const client = await MongoClient.connect('mongodb+srv://charanvir123:Capsfan123@cluster0.qluddrx.mongodb.net/stadiums?retryWrites=true&w=majority')
+    const client = await MongoClient.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PW}@cluster0.qluddrx.mongodb.net/stadiums?retryWrites=true&w=majority`)
     const db = client.db()
 
     const stadiumCollections = db.collection('stadium')
