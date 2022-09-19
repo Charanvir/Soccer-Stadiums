@@ -5,7 +5,6 @@ import { Fragment } from "react"
 import MeetupDetail from "../../components/meetups/MeetupDetail"
 
 const StadiumDetails = (props) => {
-    console.log(props)
     return (
         <Fragment>
             <Head>
