@@ -22,6 +22,28 @@
   width: 100%;
 }
 
+.controlHalf {
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.controlHalf label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.controlHalf input,
+.controlHalf textarea {
+  display: block;
+  font: inherit;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  padding: 0.25rem;
+  width: 30%;
+}
+
 .actions {
   margin-top: 1rem;
   text-align: right;
