@@ -36,7 +36,8 @@ export async function getStaticProps() {
         props: {
             stadiums: stadiums.map(stadium => ({
                 title: stadium.title,
-                address: stadium.address,
+                city: stadium.city,
+                country: stadium.country,
                 image: stadium.image,
                 id: stadium._id.toString()
             }))
