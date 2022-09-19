@@ -5,6 +5,7 @@ import { Fragment } from "react"
 import MeetupDetail from "../../components/meetups/MeetupDetail"
 
 const StadiumDetails = (props) => {
+    console.log(props)
     return (
         <Fragment>
             <Head>
@@ -19,6 +20,11 @@ const StadiumDetails = (props) => {
                 title={props.stadiumData.title}
                 address={props.stadiumData.address}
                 description={props.stadiumData.description}
+                city={props.stadiumData.city}
+                country={props.stadiumData.country}
+                capacity={props.stadiumData.capacity}
+                date_opened={props.stadiumData.date_opened}
+                teams={props.stadiumData.teams}
             ></MeetupDetail>
         </Fragment>
     )
@@ -63,7 +69,12 @@ export async function getStaticProps(context) {
                 title: stadium.title,
                 image: stadium.image,
                 address: stadium.address,
-                description: stadium.description
+                description: stadium.description,
+                city: stadium.city,
+                capacity: stadium.capacity,
+                country: stadium.country,
+                date_opened: stadium.date_opened,
+                teams: stadium.teams
             }
         }
     }
